@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class Submission extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['task_id', 'student_id', 'content', 'status', 'feedback'];
+
+    public function task()
+    {
+        return $this->belongsTo(Task::class);
+    }
+
+    public function student()
+    {
+        return $this->belongsTo(User::class, 'student_id');
+    }
+}
